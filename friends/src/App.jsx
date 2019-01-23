@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './App.css';
 
 import axios from 'axios';
+import FriendsContainer from './components/FriendsContainer';
 
 class App extends Component {
   constructor(props) {
@@ -19,10 +20,9 @@ class App extends Component {
   }
 
   render() {
-    console.log(this.state.friends);
     return (
       <div className="App">
-        <h1>working</h1>
+        <FriendsContainer data={this.state.friends} />
       </div>
     );
   }

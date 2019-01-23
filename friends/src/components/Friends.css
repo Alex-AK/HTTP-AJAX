@@ -1,0 +1,23 @@
+.friend-cards {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  border: 1px solid red;
+  width: 1000px;
+  margin: 0 auto;
+}
+
+.friend-card {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid black;
+  margin: 10px;
+  padding: 15px;
+  width: 300px;
+  height: 125px;
+}
+
+.friend-card h1 {
+  font-size: 24px;
+  font-weight: 700;
+}
