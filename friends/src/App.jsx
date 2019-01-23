@@ -22,6 +22,9 @@ class App extends Component {
   render() {
     return (
       <div className="App">
+        <nav>
+          <h1>Friends</h1>
+        </nav>
         <FriendsContainer data={this.state.friends} />
       </div>
     );
