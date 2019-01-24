@@ -1,3 +1,20 @@
+.friend-form {
+  display: flex;
+  justify-content: space-evenly;
+  width: 70%;
+  margin: 40px auto;
+}
+
+.friend-form input {
+  padding: 5px 50px 5px 5px;
+  border: none;
+  border-bottom: 1px solid grey;
+}
+
+input:focus {
+  outline: none;
+}
+
 .friend-cards {
   display: flex;
   flex-wrap: wrap;
@@ -42,8 +59,8 @@
 .button {
   display: inline-block;
   margin: 0;
-  padding: 10px 0;
-  width: 90px;
+  padding: 5px 0;
+  width: 80px;
   border: 0;
   border-radius: 3px;
   background-color: #aaa;
@@ -57,4 +74,8 @@
 
 .button:hover {
   opacity: 0.85;
+}
+
+.button:focus {
+  outline: none;
 }

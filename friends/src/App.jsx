@@ -3,12 +3,17 @@ import './App.css';
 
 import axios from 'axios';
 import FriendsContainer from './components/FriendsContainer';
+import FriendForm from './components/FriendForm';
 
 class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      friends: []
+      friends: [],
+      value: '',
+      nameInput: '',
+      ageInput: '',
+      emailInput: ''
     };
   }
 
@@ -19,13 +24,27 @@ class App extends Component {
       .catch(err => console.log(err));
   }
 
+  handleChange = e => {};
+
+  handleSubmit = e => {
+    e.preventDefault();
+    console.log('button clicked');
+  };
+
   render() {
     return (
       <div className="App">
         <nav>
           <h1>Friends</h1>
         </nav>
-        <FriendsContainer data={this.state.friends} />
+        <FriendForm
+          handleSubmit={this.handleSubmit}
+          handleChange={this.handleSubmit}
+        />
+        <FriendsContainer
+          data={this.state.friends}
+          handleSubmit={this.handleSubmit}
+        />
       </div>
     );
   }

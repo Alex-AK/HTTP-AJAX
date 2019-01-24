@@ -2,14 +2,12 @@ import React from 'react';
 
 const FriendsCard = props => {
   return (
-    <div className="friend-card">
-      <form>
-        <input type="text" placeholder="Name" />
-        <input type="text" placeholder="Age" />
-        <input type="text" placeholder="Email" />
-        <button className="button">Add</button>
-      </form>
-    </div>
+    <form className="friend-form" onSubmit={props.handleSubmit}>
+      <input type="text" placeholder="Name" onChange={props.handleChange} />
+      <input type="text" placeholder="Age" onChange={props.handleChange} />
+      <input type="text" placeholder="Email" onChange={props.handleChange} />
+      <button className="form-button button">Add</button>
+    </form>
   );
 };
 
