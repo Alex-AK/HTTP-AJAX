@@ -9,6 +9,8 @@ const FriendsForm = props => {
         name="nameInput"
         value={props.nameInput}
         onChange={props.handleChange}
+        required
+        minLength="3"
       />
       <input
         type="number"
@@ -16,6 +18,8 @@ const FriendsForm = props => {
         name="ageInput"
         value={props.ageInput}
         onChange={props.handleChange}
+        required
+        minLength="1"
       />
       <input
         type="text"
@@ -23,6 +27,8 @@ const FriendsForm = props => {
         name="emailInput"
         value={props.emailInput}
         onChange={props.handleChange}
+        required
+        minLength="5"
       />
       <button className="form-button button" onClick={props.handleSubmit}>
         {props.isUpdating ? 'Update' : 'Add'}
