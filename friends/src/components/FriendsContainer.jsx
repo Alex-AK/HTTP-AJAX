@@ -9,6 +9,8 @@ const FriendsContainer = props => {
       age={friend.age}
       email={friend.email}
       key={friend.id}
+      id={friend.id}
+      handleDelete={props.handleDelete}
     />
   ));
 

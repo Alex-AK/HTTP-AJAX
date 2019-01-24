@@ -8,7 +8,9 @@ const FriendsCard = props => {
       <p>Email: {props.email}</p>
       <div className="buttons">
         <button className="button">Edit</button>
-        <button className="button">Delete</button>
+        <button className="button" onClick={() => props.handleDelete(props.id)}>
+          Delete
+        </button>
       </div>
     </div>
   );

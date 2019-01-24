@@ -11,9 +11,11 @@ class App extends Component {
     this.state = {
       friends: [],
       value: '',
+      name: 'input',
       nameInput: '',
       ageInput: '',
-      emailInput: ''
+      emailInput: '',
+      id: null
     };
   }
 
@@ -24,11 +26,41 @@ class App extends Component {
       .catch(err => console.log(err));
   }
 
-  handleChange = e => {};
+  handleChange = e => {
+    const { name, value } = e.target;
+    this.setState({ [name]: value });
+  };
 
   handleSubmit = e => {
     e.preventDefault();
     console.log('button clicked');
+    axios
+      .post(`http://localhost:5000/friends`, {
+        name: this.state.nameInput,
+        age: this.state.ageInput,
+        email: this.state.emailInput
+      })
+      .then(res =>
+        this.setState({
+          friends: res.data,
+          nameInput: '',
+          ageInput: '',
+          emailInput: ''
+        })
+      )
+      .catch(err => {
+        console.log(err);
+      });
+  };
+
+  handleDelete = id => {
+    // console.log(id);
+    axios
+      .delete(`http://localhost:5000/friends/${id}`)
+      .then(res => this.setState({ friends: res.data }))
+      .catch(err => {
+        console.log(err);
+      });
   };
 
   render() {
@@ -39,11 +71,14 @@ class App extends Component {
         </nav>
         <FriendForm
           handleSubmit={this.handleSubmit}
-          handleChange={this.handleSubmit}
+          handleChange={this.handleChange}
+          nameInput={this.state.nameInput}
+          ageInput={this.state.ageInput}
+          emailInput={this.state.emailInput}
         />
         <FriendsContainer
           data={this.state.friends}
-          handleSubmit={this.handleSubmit}
+          handleDelete={this.handleDelete}
         />
       </div>
     );
