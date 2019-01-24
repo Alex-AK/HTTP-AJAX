@@ -63,6 +63,19 @@ class App extends Component {
       });
   };
 
+  handleUpdate = id => {
+    console.log(id);
+    id = id - 1;
+    axios.get(`http://localhost:5000/friends`).then(res => {
+      console.log(res.data[id]);
+      this.setState({
+        nameInput: res.data[id].name,
+        ageInput: res.data[id].age,
+        emailInput: res.data[id].email
+      });
+    });
+  };
+
   render() {
     return (
       <div className="App">
@@ -79,6 +92,7 @@ class App extends Component {
         <FriendsContainer
           data={this.state.friends}
           handleDelete={this.handleDelete}
+          handleUpdate={this.handleUpdate}
         />
       </div>
     );

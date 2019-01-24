@@ -11,6 +11,7 @@ const FriendsContainer = props => {
       key={friend.id}
       id={friend.id}
       handleDelete={props.handleDelete}
+      handleUpdate={props.handleUpdate}
     />
   ));
 

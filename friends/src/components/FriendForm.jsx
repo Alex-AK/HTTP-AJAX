@@ -2,7 +2,7 @@ import React from 'react';
 
 const FriendsCard = props => {
   return (
-    <form className="friend-form" onSubmit={props.handleSubmit}>
+    <form className="friend-form" onSubmit={e => e.preventDefault()}>
       <input
         type="text"
         placeholder="Name"
@@ -24,7 +24,12 @@ const FriendsCard = props => {
         value={props.emailInput}
         onChange={props.handleChange}
       />
-      <button className="form-button button">Add</button>
+      <button className="form-button button" onClick={props.handleSubmit}>
+        Add
+      </button>
+      <button className="form-button button" onClick={props.handleUpdate}>
+        Update
+      </button>
     </form>
   );
 };

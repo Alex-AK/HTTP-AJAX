@@ -7,7 +7,9 @@ const FriendsCard = props => {
       <p>Age: {props.age}</p>
       <p>Email: {props.email}</p>
       <div className="buttons">
-        <button className="button">Edit</button>
+        <button className="button" onClick={() => props.handleUpdate(props.id)}>
+          Edit
+        </button>
         <button className="button" onClick={() => props.handleDelete(props.id)}>
           Delete
         </button>
