@@ -2,11 +2,12 @@
   display: flex;
   justify-content: space-evenly;
   width: 70%;
-  margin: 40px auto;
+  margin: 20px auto;
 }
 
 .friend-form input {
-  padding: 5px 50px 5px 5px;
+  /* padding: 10px 10px -5px 5px; */
+  width: 170px;
   border: none;
   border-bottom: 1px solid grey;
 }
@@ -73,9 +74,15 @@ input:focus {
 }
 
 .button:hover {
+  transition: all 0.4s;
+  background: teal;
   opacity: 0.85;
 }
 
 .button:focus {
   outline: none;
+}
+
+.delete:hover {
+  background: red;
 }

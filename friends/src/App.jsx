@@ -15,13 +15,14 @@ class App extends Component {
       nameInput: '',
       ageInput: '',
       emailInput: '',
-      id: null
+      id: null,
+      isUpdating: false
     };
   }
 
   componentDidMount() {
     axios
-      .get('http://localhost:5000/friends')
+      .get('/friends')
       .then(res => this.setState({ friends: res.data }))
       .catch(err => console.log(err));
   }
@@ -31,49 +32,65 @@ class App extends Component {
     this.setState({ [name]: value });
   };
 
-  handleSubmit = e => {
-    e.preventDefault();
-    console.log('button clicked');
-    axios
-      .post(`http://localhost:5000/friends`, {
-        name: this.state.nameInput,
-        age: this.state.ageInput,
-        email: this.state.emailInput
-      })
-      .then(res =>
-        this.setState({
-          friends: res.data,
-          nameInput: '',
-          ageInput: '',
-          emailInput: ''
+  handleSubmit = () => {
+    if (this.state.isUpdating) {
+      axios
+        .put(`/friends/${this.state.id}`, {
+          name: this.state.nameInput,
+          age: this.state.ageInput,
+          email: this.state.emailInput
         })
-      )
-      .catch(err => {
-        console.log(err);
-      });
+        .then(res => {
+          this.setState({
+            friends: res.data,
+            nameInput: '',
+            ageInput: '',
+            emailInput: '',
+            isUpdating: false
+          });
+        })
+        .catch(err => {
+          console.log(err);
+        });
+    } else {
+      axios
+        .post(`/friends`, {
+          name: this.state.nameInput,
+          age: this.state.ageInput,
+          email: this.state.emailInput
+        })
+        .then(res =>
+          this.setState({
+            friends: res.data,
+            nameInput: '',
+            ageInput: '',
+            emailInput: ''
+          })
+        )
+        .catch(err => {
+          console.log(err);
+        });
+    }
+  };
+
+  populateForm = id => {
+    const selected = this.state.friends.find(friend => friend.id === id);
+    this.setState({
+      nameInput: selected.name,
+      ageInput: selected.age,
+      emailInput: selected.email,
+      id: selected.id,
+      isUpdating: true
+    });
   };
 
   handleDelete = id => {
-    // console.log(id);
     axios
-      .delete(`http://localhost:5000/friends/${id}`)
+      .delete(`/friends/${id}`)
       .then(res => this.setState({ friends: res.data }))
       .catch(err => {
         console.log(err);
       });
-  };
-
-  handleUpdate = id => {
-    console.log(id);
-    id = id - 1;
-    axios.get(`http://localhost:5000/friends`).then(res => {
-      console.log(res.data[id]);
-      this.setState({
-        nameInput: res.data[id].name,
-        ageInput: res.data[id].age,
-        emailInput: res.data[id].email
-      });
-    });
   };
 
   render() {
@@ -88,11 +105,12 @@ class App extends Component {
           nameInput={this.state.nameInput}
           ageInput={this.state.ageInput}
           emailInput={this.state.emailInput}
+          isUpdating={this.state.isUpdating}
         />
         <FriendsContainer
           data={this.state.friends}
           handleDelete={this.handleDelete}
-          handleUpdate={this.handleUpdate}
+          populateForm={this.populateForm}
         />
       </div>
     );
