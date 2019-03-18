@@ -1,0 +1,88 @@
+.friend-form {
+  display: flex;
+  justify-content: space-evenly;
+  width: 70%;
+  margin: 20px auto;
+}
+
+.friend-form input {
+  /* padding: 10px 10px -5px 5px; */
+  width: 170px;
+  border: none;
+  border-bottom: 1px solid grey;
+}
+
+input:focus {
+  outline: none;
+}
+
+.friend-cards {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  width: 1000px;
+  margin: 0 auto;
+}
+
+.friend-card {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid lightgrey;
+  margin: 10px;
+  padding: 20px;
+  width: 300px;
+  border-radius: 3px;
+  box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.15);
+}
+
+.friend-card:hover {
+  box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.45);
+  transition: 0.3s;
+}
+
+.friend-card h1 {
+  font-size: 24px;
+  font-weight: 700;
+  padding-bottom: 10px;
+}
+
+.friend-card p {
+  font-weight: 400;
+  padding-bottom: 10px;
+}
+
+.friend-card .buttons {
+  display: flex;
+  justify-content: space-between;
+  padding-top: 15px;
+}
+
+.button {
+  display: inline-block;
+  margin: 0;
+  padding: 5px 0;
+  width: 80px;
+  border: 0;
+  border-radius: 3px;
+  background-color: #aaa;
+  color: #fff;
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 1.5;
+  cursor: pointer;
+}
+
+.button:hover {
+  transition: all 0.4s;
+  background: teal;
+  opacity: 0.85;
+}
+
+.button:focus {
+  outline: none;
+}
+
+.delete:hover {
+  background: red;
+}
